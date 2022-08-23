@@ -5,23 +5,46 @@ import {
   useLoaderData,
   useTransition,
 } from "@remix-run/react";
+import { getSession, commitSession } from "~/session.server";
+
 type Data = {
   name: String;
   favorite: boolean;
 };
 
-export const loader: LoaderFunction = async ({ params }) => {
+export const loader: LoaderFunction = async ({ params, request }) => {
+  const session = await getSession(request.headers.get("Cookie"));
+  let fav =
+    params.place && session.has(params.place) && session.get(params.place);
+
   return json<Data>({
     name: params.place?.toLocaleUpperCase() || "",
-    favorite: false,
+    favorite: fav,
   });
 };
 
 export const action: ActionFunction = async ({ request, params }) => {
-  return json<Data>({
-    name: params.place?.toLocaleUpperCase() || "",
-    favorite: true,
-  });
+  console.log(request.headers.get("Cookie"));
+  const session = await getSession(request.headers.get("Cookie"));
+  let fav = (params.place &&
+    session.has(params.place) &&
+    session.get(params.place)) as boolean;
+
+  if (params.place) {
+    session.set(params.place, !fav);
+  }
+
+  return json<Data>(
+    {
+      name: params.place?.toLocaleUpperCase() || "",
+      favorite: !fav,
+    },
+    {
+      headers: {
+        "Set-Cookie": await commitSession(session),
+      },
+    }
+  );
 };
 
 export default function Place() {

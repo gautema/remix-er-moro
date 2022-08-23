@@ -4,10 +4,12 @@ workers_dev = true
 main = "./build/index.js"
 # https://developers.cloudflare.com/workers/platform/compatibility-dates
 compatibility_date = "2022-04-05"
+kv_namespaces = [
+  { binding = "KV_SESSION", id = "dff16821063343cdb74f99180287cea2" }
+]
 
 [site]
   bucket = "./public"
 
 [build]
   command = "npm run build"
-  
