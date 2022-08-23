@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply m-8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5v {
+  @apply my-2;
+}
+a {
+  @apply underline;
+}
