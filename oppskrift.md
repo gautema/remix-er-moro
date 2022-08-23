@@ -3,7 +3,7 @@
 ## Lag et nytt prosjekt og deploy til cloudflare
 
 ```
-npx create-remix
+npx create-remix@latest
 ```
 
 ```
@@ -107,14 +107,20 @@ Masse kode
 
 ## Legg til Meta tags
 
-## Bonusoppgave: Error boundries
+# Bonusoppgaver
 
-## Bonusoppgave: Mer avansert form
+## Error boundries
 
-## Bonusoppgave: Optismistisk UI på form submit
+## Mer avansert form
 
-## Bonusoppgave: Hent data from yr.no eller lignende eksternt api.
+## Optismistisk UI på form submit
 
-## Bonusoppgave: Hent data både i ui og serverside og sjekk forskjellene.
+## Hent data from yr.no eller lignende eksternt api.
 
-## Bonusoppgave: Prøv ut Blues Stack og deploy til fly.io
+## Hent data både i ui og serverside og sjekk forskjellene.
+
+## Prøv ut Blues Stack og deploy til fly.io
+
+## Bruk global redis på upstash.com
+
+## Form validation with https://www.remix-validated-form.io/
