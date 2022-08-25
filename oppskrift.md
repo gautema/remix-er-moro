@@ -97,6 +97,10 @@ const transition = useTransition();
 
 Masse kode
 
+## Bytt ut fra form til å bruke useFetcher
+
+Lag en action under /api/set_fav og lagre derfra
+
 ## Preload links
 
 ```
